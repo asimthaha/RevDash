@@ -11,6 +11,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export function TopNavigation() {
@@ -20,7 +25,7 @@ export function TopNavigation() {
         {/* Left section */}
         <div className="flex items-center gap-4">
           <SidebarTrigger className="hover:bg-muted" />
-          
+
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
@@ -33,12 +38,75 @@ export function TopNavigation() {
         {/* Right section */}
         <div className="flex items-center gap-4">
           {/* Notifications */}
-          <Button variant="ghost" size="icon" className="relative">
-            <Bell className="w-5 h-5" />
-            <Badge className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center p-0 bg-destructive text-destructive-foreground text-xs">
-              3
-            </Badge>
-          </Button>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="ghost" size="icon" className="relative">
+                <Bell className="w-5 h-5" />
+                <Badge className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center p-0 bg-destructive text-destructive-foreground text-xs">
+                  3
+                </Badge>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent align="end" className="w-80">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-medium">Notifications</h4>
+                  <Button variant="ghost" size="sm" className="text-xs">
+                    Mark all read
+                  </Button>
+                </div>
+                <DropdownMenuSeparator />
+                <div className="space-y-2">
+                  <div className="flex items-start gap-3 p-2 rounded-md hover:bg-muted/50">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="flex-1 space-y-1">
+                      <p className="text-sm font-medium">
+                        New customer signed up
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        Sarah Johnson joined your platform
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        2 minutes ago
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 p-2 rounded-md hover:bg-muted/50">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="flex-1 space-y-1">
+                      <p className="text-sm font-medium">
+                        Revenue target reached
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        Monthly revenue exceeded $50K
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        1 hour ago
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 p-2 rounded-md hover:bg-muted/50">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="flex-1 space-y-1">
+                      <p className="text-sm font-medium">
+                        Team meeting reminder
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        Quarterly review meeting at 3 PM
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        3 hours ago
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <DropdownMenuSeparator />
+                <Button variant="outline" size="sm" className="w-full">
+                  View all notifications
+                </Button>
+              </div>
+            </PopoverContent>
+          </Popover>
 
           {/* User Menu */}
           <DropdownMenu>
