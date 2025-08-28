@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://asimthaha.github.io/RevDash/",
+  "homepage": "https://asimthaha.github.io/startup-ops/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
