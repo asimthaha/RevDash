@@ -154,7 +154,11 @@ export function TopNavigation() {
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem>Support</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => signOut()}>
+                <DropdownMenuItem
+                  onClick={() => {
+                    signOut();
+                  }}
+                >
                   Log out
                 </DropdownMenuItem>
               </DropdownMenuContent>

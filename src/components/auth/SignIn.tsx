@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -27,8 +27,12 @@ type SignInFormData = z.infer<typeof signInSchema>;
 export function SignIn() {
   const { signIn } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  // Get the intended destination from location state, default to home page
+  const from = location.state?.from?.pathname || "/";
 
   const form = useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),
@@ -41,7 +45,7 @@ export function SignIn() {
       toast.error(error);
     } else {
       toast.success("Successfully signed in!");
-      navigate("/");
+      navigate(from, { replace: true });
     }
     setIsLoading(false);
   };

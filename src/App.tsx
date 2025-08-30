@@ -31,6 +31,8 @@ const App = () => (
           future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
         >
           <Routes>
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route
               path="/"
               element={
@@ -103,8 +105,7 @@ const App = () => (
                 </ProtectedRoute>
               }
             />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
+
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route
               path="*"
